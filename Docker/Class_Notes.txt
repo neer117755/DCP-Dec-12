@@ -1427,7 +1427,6 @@ Ansible!
 	
 		modules 		Functions to be executed in target servers (yum,apt-get)
 	
-	
 @@@@@@@
 DAY-12
 @@@@@@@
@@ -1487,3 +1486,192 @@ Ansible Roles are used to organize the Ansible components and reuse.
 Docker & Kubernetes!!!!
 
 	Docker????
+
+	
+@@@@@@@@
+Day-14
+@@@@@@@@
+
+		Docker & Kubernetes!!!!
+		
+		Containers!!!!
+		
+		Appln. package
+		
+		Build Process 		--> creates artifacts(*.war) ---> deployment (copy this artifacts into target envi.)
+		
+		Microservices 		--> each process is considered as a service!
+		
+		
+		Build ::
+		
+			compile the src code & Create the artifacts  ===> install all the required tools! (fedoro,jdk-v11,maven,git) - *.war
+			Create a container package -> pkg1 ---> (*.war,jdk11, tomcat8)
+		
+		QA : *.war ===> (jdk11, tomcat8)			pkg1
+		
+		UAT : *.war ===> (jdk8, tomcat7)			pkg1
+		
+		PROD : *.war ===> (jdk7, tomcat11)			pkg1
+		
+		Containers!!! ---> (*.war,jdk11, tomcat8)
+		
+		
+		Containers can be considered for 2 perspectives :
+		
+		
+		Developers :
+		
+		Infra-structure Perspective :
+		
+			Jenkins Master :
+			
+			VM 	Slave1 	- java_appln (mvn,jdk,git)
+				Slave2	- angular
+				Slave3	- NodeJS
+				Slave4 	- Python 
+				Slave5 	- .Net 
+		
+			VM 1---100 ????
+			
+		Jenkins Master :
+		
+			Slave1 Virtual Machine ---> Install Container Engine --> c1-java_appln (mvn,jdk,git), c2, c3, c4, ......, c100
+			
+			
+			Container Engine ???
+			
+			Docker Container Engine 
+				Create Container Images 
+				Create containers 
+				run containers 
+				
+		
+		
+		
+		VM --> Linux -- Kernel --> Namespaces & CGroup 
+	
+		2013 -- Docker was introduced...
+		
+			Google -- release Kubernetes to Open Market 
+			
+			AWS 	- EKS , ECR
+			Azure	- AKS , ACR
+			GCP 	- GKS , GCR		
+		
+		2000 -- Container Engine 
+		
+		
+		Deploy some microservices!!!! 1000 
+		
+		Ensure the availability of tht application. 
+		
+		Docker 		---> Is a containerization process, which creates Docker Images and Container and exec the same.
+		Kubernetes 	---> Container Orchestrator
+		
+		Using Docker Engine, -- how to create Docker Images, Containers and exec the same 
+		
+		Kubernetes -- How to deploy these Containers.
+		
+		Package					-->	(*.war)
+		
+		Docker Images			--> (*.war,jdk11,tomcat8) are not executable.	
+		
+		Docker Containers		--> Containers are the executable Units 
+			
+		Container Registry		--> are considered a repository to store and Manage the Container Images 
+		Docker Hub is Container Registry.
+		
+		
+		Containers are used to execute some task.		
+		It is not used to execute any OS.
+		
+		
+		docker pull 			copies the img 
+		
+		
+		docker run
+		docker exec 			used to login to the container 
+		
+@@@@@@@
+DAY-15
+@@@@@@@
+		
+	Build 	--> Application Build	--> *.war 
+			--> Docker Build 		--> Docker Appln. Image 
+	
+	
+	Initaially Containers were created for deploying only the application.
+
+		Stateless Application	--	run .	
+		Stateful Application	--
+		
+	
+	*.war === >  inside the container .. 
+	userregis.war --> inside the container1 .. email/pswd  file1.txt
+	
+	Volume in the Host Machine! dir! / 
+	
+	Login.war --> inside the container2 ..
+	
+	level isolation -- Namespaces/CGroups
+	
+	
+	single container!!!!
+	
+	Docker Compose
+			Used to run multiple containers!!!!
+	
+	Create aConfig file that defines all the container:
+	
+	manifestfile.yaml 
+	
+		Appln.Container
+		Mysql Container
+		tomcat Container
+		
+	run that file.
+	Managing Multiple containers are very challenging!
+	
+	Container Orchestration Tool 
+		Docker Swarm 
+		
+	Kubernetes !! Container Orchestration Tool 
+	
+Kubernetes!!!!
+
+	Core Concepts
+	
+		*.war1......1000  ===> Microservices  == Deploy one full appln.  --> in PROD
+
+			High Availability
+			Replicas
+			Load Balancing!!!
+		
+	Kubernetes Cluster 
+	
+		pod 
+	
+	Kubernetes Architecture 
+	
+	Kubernetes Master :  VM1
+		
+		Kubernetes Cluster:
+			Kubernetes Worker Node1 - VM1   				=== *.war 
+			Kubernetes Worker Node2
+			Kubernetes Worker Node3
+			Kubernetes Worker Node4			
+	
+
+	
+	Installation :::
+	
+		minikube
+		
+		kubeadm   -- used in real time for open source/self managed kubernetes
+		kubectl 
+		
+		Managed Services
+
+			EKS, AKS, GKS 
+		
